@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/x-icon" href="./assets/heart.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sono:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+      * {
+        font-family: 'Sono', sans-serif;
+      }
+    </style>
+
+    <title>REKOMENDASI TOPIK</title>
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12 my-4">
+          <h1 class="text-center">SISTEM REKOMENDASI TOPIK TUGAS AKHIR</h1>
+        </div>
+        <div class="col-8 mx-auto mt-4">
+          <div class="card">
+            <div class="card-body">
+              <!-- opsi 1 -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-8">
+                    <select name="opsi_1" id="opsi-1" class="form-control"  onchange="updateAnswers(this, 'matakuliah', 1)"></select>
+                  </div>
+                  <div class="col-4">
+                    <select name="nilai_1" id="nilai-1" class="form-control" onchange="updateAnswers(this, 'nilai', 1)">
+                      <option value="">- PILIH NILAI -</option>
+                      <option value="A">A</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B">B</option>
+                      <option value="B-">B-</option>
+                      <option value="C+">C+</option>
+                      <option value="C">C</option>
+                      <option value="C-">C-</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- opsi 2 -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-8">
+                    <select name="opsi_2" id="opsi-2" class="form-control" onchange="updateAnswers(this, 'matakuliah', 2)"></select>
+                  </div>
+                  <div class="col-4">
+                    <select name="nilai_2" id="nilai-2" class="form-control" onchange="updateAnswers(this, 'nilai', 2)">
+                      <option value="">- PILIH NILAI -</option>
+                      <option value="A">A</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B">B</option>
+                      <option value="B-">B-</option>
+                      <option value="C+">C+</option>
+                      <option value="C">C</option>
+                      <option value="C-">C-</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- opsi 3 -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-8">
+                    <select name="opsi_3" id="opsi-3" class="form-control" onchange="updateAnswers(this, 'matakuliah', 3)"></select>
+                  </div>
+                  <div class="col-4">
+                    <select name="nilai_3" id="nilai-3" class="form-control" onchange="updateAnswers(this, 'nilai', 3)">
+                      <option value="">- PILIH NILAI -</option>
+                      <option value="A">A</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B">B</option>
+                      <option value="B-">B-</option>
+                      <option value="C+">C+</option>
+                      <option value="C">C</option>
+                      <option value="C-">C-</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- opsi 4 -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-8">
+                    <select name="opsi_4" id="opsi-4" class="form-control" onchange="updateAnswers(this, 'matakuliah', 4)"></select>
+                  </div>
+                  <div class="col-4">
+                    <select name="nilai_4" id="nilai-4" class="form-control" onchange="updateAnswers(this, 'nilai', 4)">
+                      <option value="">- PILIH NILAI -</option>
+                      <option value="A">A</option>
+                      <option value="A-">A-</option>
+                      <option value="B+">B+</option>
+                      <option value="B">B</option>
+                      <option value="B-">B-</option>
+                      <option value="C+">C+</option>
+                      <option value="C">C</option>
+                      <option value="C-">C-</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-block btn-lg" onclick="getRecommendation()">CEK REKOMENDASI</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <a href="https://www.flaticon.com/free-icons/art-and-design" title="art and design icons">Art and design icons created by Freepik - Flaticon</a> -->
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+
+    <script>
+      const listMatkul = [
+        'SISTEM RANGKA OTOT',
+        'BIOMEKANIKA',
+        'GREEN ERGONOMI',
+        'TEKNIK PENGEMASAN',
+        'PENGALAMAN PENGGUNA DAN USABILITAS',
+        'ERGONOMI INDUSTRI',
+        'MATERIAL LANJUT',
+        'KEANDALAN MANUSIA',
+        'PERENCANAAN DAN PENGENDALIAN PROYEK',
+        'MANAJEMEN RESIKO',
+        'MANAJEMEN KUALITAS JASA',
+        'MANAJEMEN ENERGI',
+        'GREEN TECHNOLOGY',
+        'DATA SCIENCE',
+        'DATA MINING DAN MANAJEMEN PENGETAHUAN',
+        'DIGITAL MARKETING',
+        'MANAJEMEN TEKNOLOGI',
+        'SISTEM OTOMASI MESIN',
+        'PERANCANGAN EKSPERIMEN',
+        'ANALISIS KEPUTUSAN',
+        'SISTEM PEMELIHARAAN',
+        'PEMROGRAMAN LANJUT',
+        'E-BUSINESS',
+        'INDUSTRI HALAL',
+        'ANALISIS MULTIVARIAT',
+        'FUZZY DAN NEURAL NETWORK',
+        'MANAJEMEN KINERJA',
+        'PERENCANAAN DAN PENGENDALIAN PROYEK',
+        'MANAJEMEN RESIKO',
+        'MANAJEMEN KUALITAS JASA',
+        'MANAJEMEN ENERGI',
+        'GREEN TECHNOLOGY',
+        'DATA SCIENCE',
+        'DATA MINING DAN MANAJEMEN PENGETAHUAN',
+        'DIGITAL MARKETING',
+        'MANAJEMEN TEKNOLOGI',
+        'SISTEM OTOMASI MESIN',
+        'PERANCANGAN EKSPERIMEN',
+        'ANALISIS KEPUTUSAN',
+        'SISTEM PEMELIHARAAN',
+        'PEMROGRAMAN LANJUT',
+        'E-BUSINESS',
+        'INDUSTRI HALAL',
+        'ANALISIS MULTIVARIAT',
+        'FUZZY DAN NEURAL NETWORK',
+        'MANAJEMEN KINERJA'
+      ];
+
+      let listJawaban = [
+        {
+          'id': 1,
+          'matakuliah': '',
+          'nilai': ''
+        },
+        {
+          'id': 2,
+          'matakuliah': '',
+          'nilai': ''
+        },
+        {
+          'id': 3,
+          'matakuliah': '',
+          'nilai': ''
+        },
+        {
+          'id': 4,
+          'matakuliah': '',
+          'nilai': ''
+        },
+      ]
+
+      const debug = () => {
+        console.table(listJawaban);
+      }
+
+      const updateAnswers = (target, tipe, kode) => {
+        tempJawaban = [];
+        
+        duplicate = false;
+
+        listJawaban.forEach(res => {
+          if(tipe == "matakuliah") {
+            if(res.matakuliah == target.value) {
+              duplicate = true;
+            }
+          }
+
+          if(res.id == kode) {
+            val = target.value;
+            temp = {
+              'id': kode,
+              'matakuliah': (tipe == "matakuliah") ? val : res.matakuliah,
+              'nilai': (tipe == "nilai") ? val : res.nilai,
+            }
+
+            tempJawaban.push(temp);
+          } else {
+            tempJawaban.push(res);
+          }
+        });
+
+        // update jawaban
+        if(!duplicate) {
+          listJawaban = [...tempJawaban];
+        } else {
+          Swal.fire(
+            'Ops..',
+            'Tidak bisa memilih matakuliah yang sama dengan sebelumnya',
+            'warning'
+          );
+          target.value = "";
+        }
+
+        debug();
+      }
+
+      const getList = () => {
+        const opsi_1 = document.getElementById('opsi-1');
+        const opsi_2 = document.getElementById('opsi-2');
+        const opsi_3 = document.getElementById('opsi-3');
+        const opsi_4 = document.getElementById('opsi-4');
+
+        temp = `<option value="">- PILIH MATAKULIAH -</option>`;
+
+        listMatkul.forEach(res => {
+          temp += `<option value="${res}">${res}</option>`
+        });
+
+        opsi_1.innerHTML = temp;
+        opsi_2.innerHTML = temp;
+        opsi_3.innerHTML = temp;
+        opsi_4.innerHTML = temp;
+      }
+
+      const getRecommendation = () => {
+        isEmpty = false;
+        listJawaban.forEach(res => {
+          if(res.matakuliah == "" || res.nilai == "") {
+           isEmpty = true;
+          }
+        });
+
+        if(isEmpty) {
+          Swal.fire(
+            'Ops..',
+            'Kolom matakuliah atau nilai masih ada yang kosong!',
+            'warning'
+          );
+          return;
+        }
+
+        Swal.fire(
+            'Yippi...',
+            'Nanti rekomendasi akan tampil',
+            'success'
+          );
+      }
+
+      window.addEventListener('load', () => {
+        getList();
+      });
+    </script>
+  </body>
+</html>
